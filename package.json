@@ -1,0 +1,64 @@
+{
+  "name": "xiaobai-deepseek-usage-ball",
+  "version": "1.0.0",
+  "description": "极简悬浮球（macOS），实时显示 DeepSeek API 余额 + 今日/本周/本月用量与花费，登录即用。",
+  "main": "main.js",
+  "author": "tangxia880-lab",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tangxia880-lab/xiaobai-deepseek-usage-ball.git"
+  },
+  "homepage": "https://tangxia880-lab.github.io/xiaobai-deepseek-usage-ball/",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder",
+    "dist:mac": "electron-builder --mac",
+    "dist:win": "electron-builder --win"
+  },
+  "build": {
+    "appId": "com.xiaobai.deepseek-usage-ball",
+    "productName": "DeepSeek用量悬浮球",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**/*",
+      "tracker/**/*",
+      "query.py",
+      "config.example.json",
+      "package.json",
+      "!config.json",
+      "!data",
+      "!userData",
+      "!release",
+      "!build"
+    ],
+    "extraFiles": [
+      {
+        "from": "使用说明.md",
+        "to": "使用说明.md"
+      }
+    ],
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.developer-tools",
+      "icon": "build/icon.icns"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "build/icon.ico"
+    }
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8"
+  }
+}

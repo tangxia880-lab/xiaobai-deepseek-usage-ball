@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <div class="card">
+    <div class="head">
+      <span class="title">配置</span>
+      <button id="close" class="close">×</button>
+    </div>
+
+    <label class="lbl">用户 Token</label>
+    <input id="key" type="password" placeholder="登录后从浏览器 localStorage 复制 userToken" autocomplete="off">
+
+    <div class="hint">还没有 Token？<a id="getkey" href="#">去平台登录获取</a></div>
+
+    <label class="lbl">总预算（元）</label>
+    <input id="budget" type="number" placeholder="100">
+
+    <button id="save" class="save">保存</button>
+    <div id="status" class="status"></div>
+  </div>
+  <script src="settings.js"></script>
+</body>
+</html>

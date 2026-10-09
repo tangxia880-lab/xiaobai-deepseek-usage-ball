@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+  <div class="card">
+    <div class="head">
+      <span class="title">DeepSeek 用量</span>
+      <button id="close" class="close">×</button>
+    </div>
+
+    <div class="section">
+      <div class="subtitle">充值余额</div>
+      <div class="big" id="balance">—</div>
+    </div>
+
+    <div class="section">
+      <div class="subtitle">累计消费金额</div>
+      <div class="big" id="total_cost">¥0</div>
+    </div>
+
+    <div class="section balance">
+      <div class="row"><span class="k">今日消耗金额</span><span class="v" id="today">¥0</span></div>
+      <div class="row"><span class="k">本周金额</span><span class="v" id="week">¥0</span></div>
+      <div class="row"><span class="k">本月金额</span><span class="v" id="month">¥0</span></div>
+      <div class="row"><span class="k">赠送余额</span><span class="v" id="bonus">—</span></div>
+    </div>
+  </div>
+  <script src="panel.js"></script>
+</body>
+</html>
