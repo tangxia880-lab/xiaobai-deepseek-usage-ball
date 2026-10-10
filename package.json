@@ -1,6 +1,6 @@
 {
   "name": "xiaobai-deepseek-usage-ball",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "极简悬浮球（macOS），实时显示 DeepSeek API 余额 + 今日/本周/本月用量与花费，登录即用。",
   "main": "main.js",
   "author": "tangxia880-lab",
