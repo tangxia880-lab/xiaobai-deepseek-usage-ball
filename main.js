@@ -3,8 +3,10 @@ const path = require('path');
 const fs = require('fs');
 const { execFile } = require('child_process');
 
-// Electron 的所有数据（缓存、GPU 缓存等）都存到项目目录内，避免写入 ~/Library
-app.setPath('userData', path.join(__dirname, 'userData'));
+// 数据目录：开发版用项目目录，打包版用系统用户数据目录（app.asar 只读，必须可写）
+if (!app.isPackaged) {
+  app.setPath('userData', path.join(__dirname, 'userData'));
+}
 
 let ballWin = null;
 let panelWin = null;
@@ -20,7 +22,7 @@ let snapshot = {
 };
 let consoleUsage = { balance: '0', bonus: '0', totalCost: '0', today: 0, week: 0, month: 0, budget: 0 };
 
-const CONFIG_PATH = path.join(__dirname, 'config.json');
+const CONFIG_PATH = path.join(app.getPath('userData'), 'config.json');
 const QUERY_PY = path.join(__dirname, 'query.py');
 const BASE = 'https://platform.deepseek.com';
 const LOGIN_URL = 'https://platform.deepseek.com/sign_in';
@@ -31,6 +33,17 @@ function loadConfig() {
     config = JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf8'));
   } catch (e) {
     config = { user_token: '', budget: 0 };
+  }
+}
+
+function saveConfig() {
+  try {
+    fs.mkdirSync(path.dirname(CONFIG_PATH), { recursive: true });
+    fs.writeFileSync(CONFIG_PATH, JSON.stringify(config, null, 2));
+    return true;
+  } catch (e) {
+    console.log('[saveConfig ERR]', e && e.message);
+    return false;
   }
 }
 
@@ -121,7 +134,10 @@ function refreshConsole() {
 }
 
 function refreshSnapshot() {
-  execFile('python3', [QUERY_PY], { timeout: 5000 }, (err, stdout) => {
+  execFile('python3', [QUERY_PY], {
+    timeout: 5000,
+    env: { ...process.env, XIAOBAI_DATA_DIR: app.getPath('userData') },
+  }, (err, stdout) => {
     if (err) return;
     try { snapshot = JSON.parse(stdout); } catch (e) {}
   });
@@ -268,9 +284,7 @@ async function openSwitchAccount() {
         // token 发生变化才说明用户完成了扫码登录
         if (token && token !== initialToken) {
           config.user_token = token;
-          try {
-            fs.writeFileSync(CONFIG_PATH, JSON.stringify(config, null, 2));
-          } catch (e) {}
+          saveConfig();
           refreshConsole();
           for (const w of [ballWin, panelWin]) {
             if (w && !w.isDestroyed()) w.webContents.send('refresh-console');
@@ -329,16 +343,14 @@ function registerIpc() {
   ipcMain.handle('save-config', (e, userToken, budget) => {
     config.user_token = userToken;
     config.budget = budget;
-    try {
-      fs.writeFileSync(CONFIG_PATH, JSON.stringify(config, null, 2));
+    const ok = saveConfig();
+    if (ok) {
       refreshConsole();
       for (const w of [ballWin, panelWin]) {
         if (w && !w.isDestroyed()) w.webContents.send('refresh-console');
       }
-      return true;
-    } catch (err) {
-      return false;
     }
+    return ok;
   });
   ipcMain.handle('show-menu', (e) => {
     const menu = Menu.buildFromTemplate([

@@ -6,8 +6,10 @@ from collections import defaultdict
 from contextlib import contextmanager
 from datetime import datetime
 
-# 数据统一存到项目目录内（AI应用/data），不写入用户主目录
-DB_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data")
+# 数据目录：打包版用 Electron 传入的可写目录（XIAOBAI_DATA_DIR），开发版用项目内 data 目录
+DB_DIR = os.environ.get("XIAOBAI_DATA_DIR") or os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "..", "data"
+)
 DB_PATH = os.path.join(DB_DIR, "usage.db")
 
 _SCHEMA = """
