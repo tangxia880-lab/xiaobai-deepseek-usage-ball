@@ -13,12 +13,13 @@
   "scripts": {
     "start": "electron .",
     "dist": "electron-builder",
-    "dist:mac": "electron-builder --mac --publish never",
+    "dist:mac": "electron-builder --mac universal --publish never",
     "dist:win": "electron-builder --win --publish never"
   },
   "build": {
     "appId": "com.xiaobai.deepseek-usage-ball",
     "productName": "DeepSeek用量悬浮球",
+    "artifactName": "DeepSeekUsageBall-${version}-${arch}.${ext}",
     "directories": {
       "output": "release"
     },
