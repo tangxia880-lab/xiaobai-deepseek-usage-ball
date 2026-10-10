@@ -13,8 +13,8 @@
   "scripts": {
     "start": "electron .",
     "dist": "electron-builder",
-    "dist:mac": "electron-builder --mac",
-    "dist:win": "electron-builder --win"
+    "dist:mac": "electron-builder --mac --publish never",
+    "dist:win": "electron-builder --win --publish never"
   },
   "build": {
     "appId": "com.xiaobai.deepseek-usage-ball",
