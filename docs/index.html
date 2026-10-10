@@ -95,6 +95,8 @@
   .install { background: var(--card); padding: 72px 0; }
   .install h2 { text-align: center; font-size: 30px; font-weight: 700; }
   .install-steps { margin-top: 32px; display: grid; gap: 20px; }
+  .steps-2 { grid-template-columns: repeat(2, 1fr); align-items: start; }
+  .steps-2 .step-figure img { max-width: 300px; }
   .step {
     background: #fff; border: 1px solid #eef0f5; border-radius: 16px;
     padding: 26px; text-align: left;
@@ -137,6 +139,7 @@
     .shots { grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .shots figure { padding: 10px; }
     .shots figcaption { font-size: 12px; }
+    .steps-2 { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -212,7 +215,7 @@
     <div class="container">
       <h2>安装说明</h2>
       <p class="install-intro">本应用为开源软件，未做 Apple 付费签名（付费签名每年需 ¥688），博主仅无偿分享。首次打开时 macOS 会提示「无法验证开发者」，这是正常现象，按下面步骤操作即可。</p>
-      <div class="install-steps">
+      <div class="install-steps steps-2">
         <div class="step">
           <h3>第一步：打开「系统设置」</h3>
           <p>点击屏幕左上角苹果菜单 →「系统设置」→「隐私与安全性」，在「安全性」区域会看到「已阻止使用…」的提示：</p>
@@ -228,11 +231,6 @@
             <img src="install-step-2.png" alt="确认打开弹窗">
           </figure>
         </div>
-        <div class="step">
-          <h3>命令行方式（可选）</h3>
-          <p>如果不想进系统设置，也可以打开「终端」执行以下命令，之后双击 App 即可：</p>
-          <pre>xattr -cr "/Applications/deepseek用量统计.app"</pre>
-        </div>
       </div>
     </div>
   </section>
@@ -240,25 +238,34 @@
   <section class="usage" id="usage">
     <div class="container">
       <h2>如何获取 Token</h2>
-      <p class="install-intro">首次使用需要登录 DeepSeek 平台获取 Token。推荐扫码登录（自动获取），无需手动复制。</p>
+      <p class="install-intro">首次使用需要登录 DeepSeek 平台获取 Token，按下面 4 步操作即可。</p>
       <div class="install-steps">
         <div class="step">
-          <h3>方式一：扫码登录（推荐）</h3>
-          <ol>
-            <li>右键悬浮球 → 选择「<strong>切换账号</strong>」</li>
-            <li>弹出扫码窗口 → 用手机 DeepSeek App 扫码</li>
-            <li>登录成功后 Token 自动保存，余额自动显示</li>
-          </ol>
+          <h3>步骤1：登录平台</h3>
+          <p>用浏览器打开并登录 <code>platform.deepseek.com/usage</code>。</p>
         </div>
         <div class="step">
-          <h3>方式二：手动复制 userToken</h3>
-          <ol>
-            <li>浏览器登录 <code>platform.deepseek.com</code></li>
-            <li>按 <code>F12</code> 打开开发者工具 → 顶部「<code>Application</code> / 应用」标签</li>
-            <li>左侧「<code>Local Storage</code> / 本地存储」→ 点击 <code>platform.deepseek.com</code></li>
-            <li>找到 <code>userToken</code>，复制它的值</li>
-            <li>粘贴到「设置 → 用户 Token」→ 保存</li>
-          </ol>
+          <h3>步骤2：打开控制台</h3>
+          <p>按 <code>F12</code>（或 <code>Cmd + Option + I</code>）打开开发者工具，点「<strong>Console</strong>（控制台）」标签：</p>
+          <figure class="step-figure">
+            <img src="token-step-console.png" alt="开发者工具 Console 控制台">
+          </figure>
+        </div>
+        <div class="step">
+          <h3>步骤3：执行命令</h3>
+          <p>在控制台粘贴这行并回车：</p>
+          <pre>JSON.parse(localStorage.getItem('userToken')).value</pre>
+          <p>回车后会打印出一串 Token 值。</p>
+        </div>
+        <div class="step">
+          <h3>步骤4：填写并提交</h3>
+          <p>右键悬浮球 → 选「<strong>设置</strong>」，把上一步得到的 Token 粘贴到「用户 Token」输入框，点「<strong>保存</strong>」：</p>
+          <figure class="step-figure">
+            <img src="token-step-menu.png" alt="右键悬浮球菜单">
+          </figure>
+          <figure class="step-figure">
+            <img src="token-step-settings.png" alt="设置窗口填写 Token">
+          </figure>
         </div>
       </div>
     </div>
