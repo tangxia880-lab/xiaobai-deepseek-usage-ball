@@ -57,6 +57,22 @@ npm start
 4. 点击悬浮球展开用量面板，查看今日 / 本周 / 本月统计
 5. 右键 →「设置」，可配置预算与手动粘贴 Token
 
+## 🔑 如何获取 Token
+
+首次使用需要登录 DeepSeek 平台获取 Token，有两种方式：
+
+### 方式一：扫码登录（推荐）
+
+右键悬浮球 →「切换账号」→ 用手机 DeepSeek App 扫码 → 登录成功后 Token 自动保存，余额自动显示。
+
+### 方式二：手动复制 userToken
+
+1. 浏览器登录 [platform.deepseek.com](https://platform.deepseek.com)
+2. 按 `F12` 打开开发者工具 → 顶部「Application / 应用」标签
+3. 左侧「Local Storage / 本地存储」→ 点击 `platform.deepseek.com`
+4. 找到 `userToken`，复制它的值
+5. 粘贴到「设置 → 用户 Token」→ 保存
+
 ## ⚙️ 配置
 
 首次运行会在项目目录生成 `config.json`（已被 `.gitignore` 忽略）。模板见 [config.example.json](config.example.json)。

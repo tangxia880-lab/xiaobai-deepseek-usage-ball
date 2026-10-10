@@ -123,6 +123,9 @@
     box-shadow: 0 6px 18px rgba(31,36,48,.08);
   }
 
+  .usage { padding: 72px 0; }
+  .usage h2 { text-align: center; font-size: 30px; font-weight: 700; }
+
   footer { text-align: center; padding: 40px 24px; color: var(--muted); font-size: 14px; }
   footer a { color: var(--c1); }
 
@@ -143,6 +146,7 @@
     <nav>
       <a href="#features">特性</a>
       <a href="#install">安装</a>
+      <a href="#usage">登录</a>
       <a href="https://github.com/tangxia880-lab/xiaobai-deepseek-usage-ball" target="_blank" rel="noopener">GitHub</a>
     </nav>
   </header>
@@ -228,6 +232,33 @@
           <h3>命令行方式（可选）</h3>
           <p>如果不想进系统设置，也可以打开「终端」执行以下命令，之后双击 App 即可：</p>
           <pre>xattr -cr "/Applications/DeepSeek用量悬浮球.app"</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="usage" id="usage">
+    <div class="container">
+      <h2>如何获取 Token</h2>
+      <p class="install-intro">首次使用需要登录 DeepSeek 平台获取 Token。推荐扫码登录（自动获取），无需手动复制。</p>
+      <div class="install-steps">
+        <div class="step">
+          <h3>方式一：扫码登录（推荐）</h3>
+          <ol>
+            <li>右键悬浮球 → 选择「<strong>切换账号</strong>」</li>
+            <li>弹出扫码窗口 → 用手机 DeepSeek App 扫码</li>
+            <li>登录成功后 Token 自动保存，余额自动显示</li>
+          </ol>
+        </div>
+        <div class="step">
+          <h3>方式二：手动复制 userToken</h3>
+          <ol>
+            <li>浏览器登录 <code>platform.deepseek.com</code></li>
+            <li>按 <code>F12</code> 打开开发者工具 → 顶部「<code>Application</code> / 应用」标签</li>
+            <li>左侧「<code>Local Storage</code> / 本地存储」→ 点击 <code>platform.deepseek.com</code></li>
+            <li>找到 <code>userToken</code>，复制它的值</li>
+            <li>粘贴到「设置 → 用户 Token」→ 保存</li>
+          </ol>
         </div>
       </div>
     </div>
