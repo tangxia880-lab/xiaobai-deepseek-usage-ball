@@ -96,7 +96,7 @@
   .install h2 { text-align: center; font-size: 30px; font-weight: 700; }
   .install-steps { margin-top: 32px; display: grid; gap: 20px; }
   .steps-2 { grid-template-columns: repeat(2, 1fr); align-items: start; }
-  .steps-2 .step-figure img { max-width: 300px; }
+  .steps-2 .step-figure img { max-width: 100%; height: 300px; object-fit: contain; }
   .step {
     background: #fff; border: 1px solid #eef0f5; border-radius: 16px;
     padding: 26px; text-align: left;
@@ -122,6 +122,15 @@
   .step-figure img {
     max-width: 100%; height: auto; border-radius: 10px;
     border: 1px solid #eef0f5;
+    box-shadow: 0 6px 18px rgba(31,36,48,.08);
+  }
+  .step-figure-row {
+    margin: 16px 0; display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 14px; align-items: center;
+  }
+  .step-figure-row img {
+    max-width: 100%; height: 260px; object-fit: contain;
+    border-radius: 10px; border: 1px solid #eef0f5;
     box-shadow: 0 6px 18px rgba(31,36,48,.08);
   }
 
@@ -260,12 +269,10 @@
         <div class="step">
           <h3>步骤4：填写并提交</h3>
           <p>右键悬浮球 → 选「<strong>设置</strong>」，把上一步得到的 Token 粘贴到「用户 Token」输入框，点「<strong>保存</strong>」：</p>
-          <figure class="step-figure">
+          <div class="step-figure-row">
             <img src="token-step-menu.png" alt="右键悬浮球菜单">
-          </figure>
-          <figure class="step-figure">
             <img src="token-step-settings.png" alt="设置窗口填写 Token">
-          </figure>
+          </div>
         </div>
       </div>
     </div>
