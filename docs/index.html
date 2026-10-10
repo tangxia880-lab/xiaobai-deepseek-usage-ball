@@ -92,6 +92,27 @@
   }
   .shots figcaption { margin-top: 12px; font-size: 14px; color: var(--muted); }
 
+  .install { background: var(--card); padding: 72px 0; }
+  .install h2 { text-align: center; font-size: 30px; font-weight: 700; }
+  .install-steps { margin-top: 32px; display: grid; gap: 20px; }
+  .step {
+    background: #fff; border: 1px solid #eef0f5; border-radius: 16px;
+    padding: 26px; text-align: left;
+  }
+  .step h3 { font-size: 17px; margin-bottom: 12px; }
+  .step p { font-size: 14px; color: var(--muted); }
+  .step ol { margin: 12px 0 0 20px; }
+  .step ol li { font-size: 14px; margin-bottom: 10px; color: var(--text); }
+  .step code {
+    background: #f1f2f6; padding: 2px 8px; border-radius: 6px;
+    font-size: 13px; font-family: "SF Mono", Menlo, Consolas, monospace;
+  }
+  .step pre {
+    background: #1f2430; color: #fff; padding: 14px 16px; border-radius: 10px;
+    overflow-x: auto; font-size: 13px; margin-top: 10px;
+    font-family: "SF Mono", Menlo, Consolas, monospace; line-height: 1.5;
+  }
+
   footer { text-align: center; padding: 40px 24px; color: var(--muted); font-size: 14px; }
   footer a { color: var(--c1); }
 
@@ -111,6 +132,7 @@
     <div class="brand"><span class="dot"></span>DeepSeek 用量悬浮球</div>
     <nav>
       <a href="#features">特性</a>
+      <a href="#install">安装</a>
       <a href="https://github.com/tangxia880-lab/xiaobai-deepseek-usage-ball" target="_blank" rel="noopener">GitHub</a>
     </nav>
   </header>
@@ -125,6 +147,7 @@
       <a class="btn btn-ghost" href="https://github.com/tangxia880-lab/xiaobai-deepseek-usage-ball" target="_blank" rel="noopener">查看源码</a>
     </div>
     <p class="hint">开源 · MIT 协议 · 支持 macOS / Windows</p>
+    <p class="hint" style="margin-top:8px;">macOS 首次打开提示？<a href="#install" style="color:var(--c1);">点此查看安装说明</a></p>
   </section>
 
   <section class="features" id="features">
@@ -167,6 +190,24 @@
           <img src="screenshot-1.png" alt="展开面板">
           <figcaption>展开面板</figcaption>
         </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="install" id="install">
+    <div class="container">
+      <h2>安装说明</h2>
+      <div class="install-steps">
+        <div class="step">
+          <h3>macOS 首次打开提示</h3>
+          <p>本应用为开源软件，未做 Apple 付费签名，首次打开时 macOS 会提示「无法验证开发者」。这是正常现象，按下面任一方式即可打开：</p>
+          <ol>
+            <li><strong>右键打开</strong>：在 App 图标上右键（或按住 Control 点按）→ 选择「打开」→ 再点「打开」。</li>
+            <li><strong>命令行</strong>：打开「终端」执行以下命令后，再双击 App 即可：
+              <pre>xattr -cr "/Applications/DeepSeek用量悬浮球.app"</pre>
+            </li>
+          </ol>
+        </div>
       </div>
     </div>
   </section>

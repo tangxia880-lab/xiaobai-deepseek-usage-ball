@@ -29,7 +29,14 @@
 
 前往 [Releases](https://github.com/tangxia880-lab/xiaobai-deepseek-usage-ball/releases) 下载最新的 `.dmg`，拖入「应用程序」即可。
 
-> macOS 首次打开可能提示「无法验证开发者」，右键 App → 打开 即可。
+> **macOS 首次打开提示**：本应用为开源软件，未做 Apple 付费签名，首次打开时 macOS 会提示「无法验证开发者」。这是正常现象，按下面任一方式即可打开：
+>
+> 1. **右键打开**：在 App 图标上右键（或按住 Control 点按）→ 选择「打开」→ 再点「打开」。
+> 2. **命令行**：打开「终端」执行以下命令后，再双击 App 即可：
+>
+> ```bash
+> xattr -cr "/Applications/DeepSeek用量悬浮球.app"
+> ```
 
 ### 方式二：从源码运行
 
