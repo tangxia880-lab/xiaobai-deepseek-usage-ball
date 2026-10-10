@@ -35,7 +35,7 @@
 > 2. **命令行**：打开「终端」执行以下命令后，再双击 App 即可：
 >
 > ```bash
-> xattr -cr "/Applications/DeepSeek用量悬浮球.app"
+> xattr -cr "/Applications/deepseek用量统计.app"
 > ```
 
 ### 方式二：从源码运行

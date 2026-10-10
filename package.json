@@ -18,7 +18,7 @@
   },
   "build": {
     "appId": "com.xiaobai.deepseek-usage-ball",
-    "productName": "DeepSeek用量悬浮球",
+    "productName": "deepseek用量统计",
     "artifactName": "DeepSeekUsageBall-${version}-${arch}.${ext}",
     "directories": {
       "output": "release"
